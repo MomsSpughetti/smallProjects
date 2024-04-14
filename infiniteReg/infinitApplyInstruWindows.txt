@@ -1,0 +1,39 @@
+1) install python
+2) press: W+R
+3) check: pip --version
+3*)
+else install pip: 
+	py -m ensurepip --upgrade (in prompt)
+	download: https://bootstrap.pypa.io/get-pip.py
+	move to the download dir (using cd) (in prompt)
+	py get-pip.py (in prompt)
+4)install selenium:
+	pip install selenium
+5)install chromedriver:
+	https://sites.google.com/chromium.org/driver/downloads?authuser=0
+	move it to 'C:/path/to/chromedriver.exe' (any dir you want)
+
+6)update the following as needed:
+
+
+from selenium import webdriver
+webdriver_path = '/usr/local/bin/chromedriver'
+# Create a new instance of the Chrome web driver
+driver = webdriver.Chrome(executable_path=webdriver_path)
+
+driver.get('https://students.technion.ac.il/local/tregister/cart')
+
+import time
+times = 0
+while True:
+    try:
+        time.sleep(2)
+        elem = driver.find_element("id","process_cart_item_request")
+        elem.click()
+        print("click number: ", times)
+        times+=1
+        time.sleep(20)
+    except:
+        pass
+        
+ 7)run the script
